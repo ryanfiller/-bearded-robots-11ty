@@ -4,77 +4,48 @@
 
 {% block content %}
   {# <div class="fixed inset-0 flex justify-center items-center"> #}
-    <div>
-      <span>lastBuildDate:</span>
-      {{ ryanblog.lastBuildDate }}
-    </div>
-    <div>
-      <span>title:</span>
-      {{ ryanblog.title }}
-    </div>
-    <div>
-      <span>description:</span>
-      {{ ryanblog.description }}
-    </div>
-    <div>
-      <span>link:</span>
-      {{ ryanblog.link }}
-    </div>
-    <div>
-      <span>managingEditor:</span>
-      {{ ryanblog.managingEditor }}
-    </div>
-    <div>
-      <span>webMaster:</span>
-      {{ ryanblog.webMaster }}
-    </div>
-    <div>
-      <span>image:</span>
-      {{ ryanblog.image[0] | dump('\t') }}
-    </div>
-
-    ---
+    <header>
+      <h1>
+        syndication from
+        <a href="{{ ryanblog.link }}">
+          {{ ryanblog.title }}
+        </a>
+      </h1>
+      <span>last updated: {{ ryanblog.update }}</span>
+      <p>
+        {{ ryanblog.description }}  
+      <p>
+      <a href="mailto:{{ ryanblog.email }}?subject=Dear {{ ryanblog.author }}">
+        Contact Me
+      </a>
+      <img width="100" src="{{ ryanblog.image.src }}" alt="{{ ryanblog.image.alt }}" />
+    </header>
+    
     <ul>
-      {% for item in ryanblog.item %}
+      {% for post in ryanblog.posts %}
         <li>
-          <div>
-            <span>title:</span>
-            {{ item.title }}
-          </div>
-          <div>
-            <span>enclosure:</span>
-            {{ item.enclosure[0]['$'] | dump }}
-          </div>
-          <div>
-            <span>link:</span>
-            {{ item.link }}
-          </div>
-          <div>
-            <span>guid:</span>
-            {{ item.guid }}
-          </div>
-          <div>
-            <span>pubDate:</span>
-            {{ item.pubDate }}
-          </div>
-          <div>
-            <span>category:</span>
-            {{ item.category }}
-          </div>
-          <div>
-            <span>author:</span>
-            {{ item.author }}
-          </div>
-          <div>
-            <span>description:</span>
-            {{ item.description }}
-          </div>
-          <div>
-            <span>content:encoded:</span>
-            {{ item['content:encoded'] | safe }}
-          </div>
+          <a href="{{ post.link }}">
+            <article>
+              <header>
+                <img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
+                <h2>{{ post.title }}</h2>
+                {{ post.date }}
+              </header>
+              <ul>
+                {% for category in post.categories %}
+                  <li>{{ category }}</li>
+                {% endfor %}
+              </ul>
+              <p>
+                {{ post.excerpt | safe }}
+              </p>
+              <div>
+                {# <span>content:encoded:</span>
+                {{ post['content:encoded'] | safe }}
+              </div> #}
+            </article>
+          </a>
         </li>
-        ---
       {% endfor %}
     </ul>
 
