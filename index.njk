@@ -3,10 +3,80 @@
 {% block title %}It does work{% endblock %}
 
 {% block content %}
-  <div class="fixed inset-0 flex justify-center items-center">
+  {# <div class="fixed inset-0 flex justify-center items-center"> #}
     <div>
-      <span class="text-change">Good design</span><br/>
-      <span class="change">is<br/>as little design<br/>as possible</span>
+      <span>lastBuildDate:</span>
+      {{ ryanblog.lastBuildDate }}
     </div>
-  </div>
+    <div>
+      <span>title:</span>
+      {{ ryanblog.title }}
+    </div>
+    <div>
+      <span>description:</span>
+      {{ ryanblog.description }}
+    </div>
+    <div>
+      <span>link:</span>
+      {{ ryanblog.link }}
+    </div>
+    <div>
+      <span>managingEditor:</span>
+      {{ ryanblog.managingEditor }}
+    </div>
+    <div>
+      <span>webMaster:</span>
+      {{ ryanblog.webMaster }}
+    </div>
+    <div>
+      <span>image:</span>
+      {{ ryanblog.image[0] | dump('\t') }}
+    </div>
+
+    ---
+    <ul>
+      {% for item in ryanblog.item %}
+        <li>
+          <div>
+            <span>title:</span>
+            {{ item.title }}
+          </div>
+          <div>
+            <span>enclosure:</span>
+            {{ item.enclosure[0]['$'] | dump }}
+          </div>
+          <div>
+            <span>link:</span>
+            {{ item.link }}
+          </div>
+          <div>
+            <span>guid:</span>
+            {{ item.guid }}
+          </div>
+          <div>
+            <span>pubDate:</span>
+            {{ item.pubDate }}
+          </div>
+          <div>
+            <span>category:</span>
+            {{ item.category }}
+          </div>
+          <div>
+            <span>author:</span>
+            {{ item.author }}
+          </div>
+          <div>
+            <span>description:</span>
+            {{ item.description }}
+          </div>
+          <div>
+            <span>content:encoded:</span>
+            {{ item['content:encoded'] | safe }}
+          </div>
+        </li>
+        ---
+      {% endfor %}
+    </ul>
+
+  {# </div> #}
 {% endblock %}
