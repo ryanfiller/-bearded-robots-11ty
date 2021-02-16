@@ -5,13 +5,16 @@ module.exports = {
       safelist: [],
     },
   },
+  darkMode: 'media',
   theme: {
     extend: {
       colors: {
-        change: "transparent",
-      },
-    },
+        dark: 'black',
+        light: 'white',
+        highlight: 'red'
+      }
+    }
   },
   variants: {},
-  plugins: [],
+  plugins: []
 }

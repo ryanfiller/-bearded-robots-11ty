@@ -6,24 +6,32 @@ pagination:
 permalink: "/{{ post.url }}/"
 ---
 
-<img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
+{% extends "_includes/default.njk" %}
 
-<h1>{{ post.title }}</h1>
+{% block head %}
+  <title>{{ ryanblog.title }} | {{ post.title }}</title>
+{% endblock %}
 
-{{ post.date }}
+{% block content %}
+  <img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
 
-<ul>
-  {% for category in post.categories %}
-    <li>{{ category }}</li>
-  {% endfor %}
-</ul>
+  <h1>{{ post.title }}</h1>
 
-<a href="{{ ryanblog.url }}/blog/{{ post.url }}">Read the original post</a>
+  {{ post.date }}
 
-<p>
-  {{ post.excerpt | safe }}
-</p>
+  <ul>
+    {% for category in post.categories %}
+      <li>{{ category }}</li>
+    {% endfor %}
+  </ul>
 
-<article>
-  {{ post.html | safe }}
-</article>
+  <a href="{{ ryanblog.url }}/blog/{{ post.url }}">Read the original post</a>
+
+  <p>
+    {{ post.excerpt | safe }}
+  </p>
+
+  <article>
+    {{ post.html | safe }}
+  </article>
+{% endblock %}
