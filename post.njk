@@ -1,0 +1,29 @@
+---
+pagination:
+    data: ryanblog.posts
+    size: 1
+    alias: post
+permalink: "/{{ post.url }}/"
+---
+
+<img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
+
+<h1>{{ post.title }}</h1>
+
+{{ post.date }}
+
+<ul>
+  {% for category in post.categories %}
+    <li>{{ category }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{{ ryanblog.url }}/blog/{{ post.url }}">Read the original post</a>
+
+<p>
+  {{ post.excerpt | safe }}
+</p>
+
+<article>
+  {{ post.html | safe }}
+</article>

@@ -20,7 +20,7 @@ module.exports = async function() {
         email: parsed.webMaster[0].trim().match(/(.*)\@(.*).com/)[0],
         posts: parsed.item.map(item => ({
             title: item.title[0].trim(),
-            url: item.link[0].trim().replace('https://www.ryanfiller.com/blog', ''),
+            url: item.link[0].trim().replace('https://www.ryanfiller.com/blog/', ''),
             date: new Date(item.pubDate[0].trim()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric' }),
             image: {
                 src: item.enclosure[0]['$'].url.trim(),

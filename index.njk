@@ -7,7 +7,7 @@
     <header>
       <h1>
         syndication from
-        <a href="{{ ryanblog.link }}">
+        <a href="{{ ryanblog.url }}">
           {{ ryanblog.title }}
         </a>
       </h1>
@@ -24,7 +24,7 @@
     <ul>
       {% for post in ryanblog.posts %}
         <li>
-          <a href="{{ post.link }}">
+          <a href="/{{ post.url }}">
             <article>
               <header>
                 <img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
@@ -39,10 +39,6 @@
               <p>
                 {{ post.excerpt | safe }}
               </p>
-              <div>
-                {# <span>content:encoded:</span>
-                {{ post['content:encoded'] | safe }}
-              </div> #}
             </article>
           </a>
         </li>
