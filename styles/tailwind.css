@@ -22,6 +22,10 @@
   --transparent: transparent;
 }
 
+*::selection {
+  @apply bg-highlight;
+}
+
 a:hover,
 a:focus {
   @apply text-highlight;
