@@ -16,19 +16,24 @@
         <a href="/{{ post.url }}" class="group flex flex-col justify-center relative overflow-hidden h-full w-full bg-transparent hover:bg-highlight focus:bg-highlight">
           <img 
             src="{{ post.image.src }}?nf_resize=fit&w=750" alt="{{ post.image.alt }}" 
-            class="absolute z-0 object-cover h-full w-full grayscale opacity-50"
+            class="absolute z-0 object-cover object-right h-full w-full grayscale opacity-25 dark:opacity-50"
           />
           <article class="flex flex-col text-dark dark:text-light font-bold text-center w-full relative z-1 p-5">
             <time class="text-lg my-5 opacity-0 overflow-hidden group-hover:opacity-100">
               {{ post.date }}
             </time>
             <h2 class="text-3xl my-5">
+              {% if post.series %}
+                <span class="block text-xl text-center">
+                  {{ post.series }}:
+                </span>
+              {% endif %}
               {{ post.title }}
             </h2>
             <ul class="text-xl my-5 opacity-0 overflow-hidden group-hover:opacity-100">
               {% for category in post.categories %}
                 <li class="inline">
-                  {{ category }}{% if loop.last %}{% else %}, {% endif %}
+                  #{{ category }}{% if loop.last %}{% else %}, {% endif %}
                 </li>
               {% endfor %}
             </ul>
@@ -38,8 +43,8 @@
     {% endfor %}
   </ul>
 
-  <a href="{{ ryanblog.url }}/blog/" target="_blank" rel="noopener" class="flex justify-center w-full text-5xl px-5 py-10 hover:bg-current">
-    <span class="block container text-dark dark:text-light">
+  <a href="{{ ryanblog.url }}/blog/" target="_blank" rel="noopener" class="flex justify-center w-full text-5xl py-10 hover:bg-current">
+    <span class="block container text-dark dark:text-light px-5">
       all posts »
     </span>
   </a>

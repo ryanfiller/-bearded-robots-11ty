@@ -19,7 +19,8 @@ module.exports = async function() {
         author: parsed.webMaster[0].trim().match(/\((.*)\)/)[1],
         email: parsed.webMaster[0].trim().match(/(.*)\@(.*).com/)[0],
         posts: parsed.item.map(item => ({
-            title: item.title[0].trim(),
+            title: item.title[0].trim().replace(/\((.*) Series\)/, ''),
+            series: item.title[0].trim().match(/\((.*) Series\)/) ? item.title[0].trim().match(/\((.*) Series\)/)[1] : '',
             url: item.link[0].trim().replace('https://www.ryanfiller.com/blog/', ''),
             date: new Date(item.pubDate[0].trim()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric' }),
             image: {
