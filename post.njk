@@ -17,7 +17,7 @@ permalink: "/{{ post.url }}/"
     <div class="col-start-2 col-end-4 row-start-1 row-end-2 h-full w-full relative z-0 px-5 mt-20 lg:mt-0">
       <img 
         class="object-cover object-right h-full w-full opacity-75 grayscale"
-        src="{{ post.image.src }}" alt="{{ post.image.alt }}"
+        src="{{ post.image.src }}?nf_resize=fit&w=1000" alt="{{ post.image.alt }}"
       />
     </div>
 
@@ -31,7 +31,9 @@ permalink: "/{{ post.url }}/"
             {{ post.series }}:
           </span>
         {% endif %}
-        {{ post.title }}
+        <span class="font-bold">
+          {{ post.title }}
+        </span>
       </h1>
 
       <p class="block text-2xl mb-20">
@@ -50,7 +52,7 @@ permalink: "/{{ post.url }}/"
         {{ post.date }}
       </time>
 
-      <a href="{{ ryanblog.url }}/blog/{{ post.url }}" class="text-2xl">
+      <a href="{{ ryanblog.url }}/blog/{{ post.url }}" class="text-2xl font-bold">
         read the original post »
       </a>
 
@@ -58,7 +60,7 @@ permalink: "/{{ post.url }}/"
 
   </header>
 
-  <article class="container px-5 mt-10 mb-40">
+  <article class="post-body container px-5 mt-10 mb-40">
     {{ post.html | safe }}
   </article>
 

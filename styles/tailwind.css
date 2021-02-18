@@ -9,9 +9,9 @@
 }
 
 :root {
-  --black: black;
-  --white: white;
-  --highlight: red;
+  --black: #010101;
+  --white: #fefefe;
+  --highlight: #f51e30;
   --transparent: transparent;
 }
 
