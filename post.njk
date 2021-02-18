@@ -13,25 +13,58 @@ permalink: "/{{ post.url }}/"
 {% endblock %}
 
 {% block content %}
-  <img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
+  <header class="container lg:grid grid-cols-3 items-center">
+    <div class="col-start-2 col-end-4 row-start-1 row-end-2 h-full w-full relative z-0 px-5 mt-20 lg:mt-0">
+      <img 
+        class="object-cover object-right h-full w-full opacity-75 grayscale"
+        src="{{ post.image.src }}" alt="{{ post.image.alt }}"
+      />
+    </div>
 
-  <h1>{{ post.title }}</h1>
+    <div class="lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2 h-full w-full relative z-1 bg-gradient-to-r text-light dark:text-dark from-current to-transparent">
+    </div>
 
-  {{ post.date }}
+    <div class="col-start-1 col-end-3 row-start-1 row-end-2 relative z-2 px-5 py-20">
+      <h1 class="text-6xl mb-5">
+        {% if post.series %}
+          <span class="block text-3xl">
+            {{ post.series }}:
+          </span>
+        {% endif %}
+        {{ post.title }}
+      </h1>
 
-  <ul>
-    {% for category in post.categories %}
-      <li>{{ category }}</li>
-    {% endfor %}
-  </ul>
+      <p class="block text-2xl mb-20">
+        {{ post.excerpt | safe }}
+      </p>
 
-  <a href="{{ ryanblog.url }}/blog/{{ post.url }}">Read the original post</a>
+      <ul class="text-2xl mb-1">
+        {% for category in post.categories %}
+          <li class="inline">
+            #{{ category }}{% if loop.last %}{% else %}, {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
 
-  <p>
-    {{ post.excerpt | safe }}
-  </p>
+      <time class="block text-2xl mb-1">
+        {{ post.date }}
+      </time>
 
-  <article>
+      <a href="{{ ryanblog.url }}/blog/{{ post.url }}" class="text-2xl">
+        read the original post »
+      </a>
+
+    </div>
+
+  </header>
+
+  <article class="container px-5 mt-10 mb-40">
     {{ post.html | safe }}
   </article>
+
+  <a href="/" class="flex justify-center w-full text-5xl py-10 hover:bg-current">
+    <span class="block container text-dark dark:text-light px-5">
+      « back
+    </span>
+  </a>
 {% endblock %}
