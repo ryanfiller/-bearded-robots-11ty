@@ -19,3 +19,9 @@ a:hover,
 a:focus {
   color: var(--highlight);
 }
+
+.post-body {
+  & p {
+    background: lime;
+  }
+}
