@@ -5,47 +5,43 @@
 {% endblock %}
 
 {% block content %}
-  {# <div class="fixed inset-0 flex justify-center items-center"> #}
-    <header>
-      <h1>
-        syndication from
-        <a href="{{ ryanblog.url }}">
-          {{ ryanblog.title }}
-        </a>
-      </h1>
-      <span>last updated: {{ ryanblog.update }}</span>
-      <p>
-        {{ ryanblog.description }}  
-      <p>
-      <a href="mailto:{{ ryanblog.email }}?subject=Dear {{ ryanblog.author }}">
-        Contact Me
-      </a>
-      <img width="100" src="{{ ryanblog.image.src }}" alt="{{ ryanblog.image.alt }}" />
-    </header>
-    
-    <ul>
-      {% for post in ryanblog.posts %}
-        <li>
-          <a href="/{{ post.url }}">
-            <article>
-              <header>
-                <img width="500" src="{{ post.image.src }}" alt="{{ post.image.alt }}" />
-                <h2>{{ post.title }}</h2>
-                {{ post.date }}
-              </header>
-              <ul>
-                {% for category in post.categories %}
-                  <li>{{ category }}</li>
-                {% endfor %}
-              </ul>
-              <p>
-                {{ post.excerpt | safe }}
-              </p>
-            </article>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
 
-  {# </div> #}
+  <h1 class="container text-6xl px-5 py-10">
+    recent posts:
+  </h1>
+    
+  <ul class="flex-1 w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    {% for post in ryanblog.posts %}
+      <li>
+        <a href="/{{ post.url }}" class="group flex flex-col justify-center relative overflow-hidden h-full w-full bg-transparent hover:bg-highlight focus:bg-highlight">
+          <img 
+            src="{{ post.image.src }}" alt="{{ post.image.alt }}" 
+            class="absolute z-0 object-cover h-full w-full grayscale opacity-50"
+          />
+          <article class="flex flex-col text-dark dark:text-light font-bold text-center w-full relative z-1 p-5">
+            <time class="text-lg my-5 opacity-0 overflow-hidden group-hover:opacity-100">
+              {{ post.date }}
+            </time>
+            <h2 class="text-3xl my-5">
+              {{ post.title }}
+            </h2>
+            <ul class="text-xl my-5 opacity-0 overflow-hidden group-hover:opacity-100">
+              {% for category in post.categories %}
+                <li class="inline">
+                  {{ category }}{% if loop.last %}{% else %}, {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </article>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{{ ryanblog.url }}/blog/" target="_blank" rel="noopener" class="flex justify-center w-full text-5xl px-5 py-10 hover:bg-current">
+    <span class="block container text-dark dark:text-light">
+      all posts »
+    </span>
+  </a>
+
 {% endblock %}

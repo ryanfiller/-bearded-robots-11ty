@@ -11,9 +11,63 @@
     {% block head %}{% endblock %}
   </head>
 
-  <body class='bg-light or text-dark dark:bg-dark dark:text-light'>
-    {% block content %}
-      {{ content | safe }}
-    {% endblock %}
+  <body class="bg-light text-dark dark:bg-dark dark:text-light text-base min-h-screen flex flex-col">
+
+    <header class="bg-dark text-light flex justify-center">
+      <div class="container flex justify-between items-center flex-wrap p-5 pb-0">
+        <div class="mb-5">
+          <span class="block text-4xl">
+            <a href="/">
+              {{ ryanblog.title }}
+            </a>
+          </span>
+          <span class="block text-xs">
+            syndicated posts from
+            <a href="{{ ryanblog.url }}" target="_blank" rel="noopener">
+              {{ ryanblog.url | replace("https://", "") | replace("www.", "") }}
+            </a>
+          </span>
+        </div>
+        <div class="mb-5">
+          <span class="block text-xs">
+            <span class="block">last updated:</span>  
+            <span class="block">{{ ryanblog.update }}</span>  
+          </span>
+          <span class="block text-sm">
+            <a href="mailto:{{ ryanblog.email }}?subject=Dear {{ ryanblog.author }}">
+              contact me
+            </a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class='flex-1 flex flex-col justify-center items-center'>
+      {% block content %}
+        {{ content | safe }}
+      {% endblock %}
+    </main>
+
+    <footer class="bg-dark text-light flex justify-center">
+      <div class="container flex justify-between items-center flex-wrap p-5 pt-0">
+        <div class="text-sm mt-5">
+          built with
+          <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>,
+          <a href="https://tailwindcss.com/" target="_blank" rel="noopener">tailwind</a>,
+          <a href="https://www.netlify.com/" target="_blank" rel="noopener">netlify</a>,
+          and
+          <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">goatcounter</a>
+        </div>
+
+        <div class="text-sm mt-5" target="_blank" rel="noopener">
+          <a href="https://www.ryanfiller.com/" target="_blank" rel="noopener">ryanfiller.com</a>
+          |
+          <a href="http://beardedrobots.com/" target="_blank" rel="noopener">beardedrobots.com</a>
+          |
+          <a href="https://github.com/ryanfiller/bearded-robots-11ty" target="_blank" rel="noopener">code</a>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>

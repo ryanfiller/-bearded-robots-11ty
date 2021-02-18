@@ -9,11 +9,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: 'black',
-        light: 'white',
-        highlight: 'red'
+        dark: 'var(--black)',
+        light: 'var(--white)',
+        highlight: 'var(--highlight)',
+        transparent: 'var(--transparent)'
       }
-    }
+    },
   },
   variants: {},
   plugins: []

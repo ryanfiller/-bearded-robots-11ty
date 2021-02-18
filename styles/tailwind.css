@@ -3,7 +3,19 @@
 @tailwind utilities;
 
 @layer utilities {
-  .change {
-    color: black;
+  .grayscale {
+    filter: grayscale(1);
   }
+}
+
+:root {
+  --black: black;
+  --white: white;
+  --highlight: red;
+  --transparent: transparent;
+}
+
+a:hover,
+a:focus {
+  color: var(--highlight);
 }
