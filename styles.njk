@@ -1,0 +1,101 @@
+{% extends "_includes/default.njk" %}
+
+{% block head %}
+  <title>{{ ryanblog.title }} | styleguide</title>
+{% endblock %}
+
+{% block content %}
+  <article class="post-body container px-5 mt-20 mb-40 text-lg">
+    <h1>Styles</h1>
+    <br/>
+    <h2>heading 2</h2>
+    <h3>heading 3</h3>
+    <h5>heading 5</h5>
+    <h6>heading 6</h6>
+    <h6>heading 6</h6>
+
+    <p>
+      <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a> <code>In non suscipit justo, in semper arcu. Fusce bibendum metus tortor, at pulvinar quam imperdiet in. Suspendisse blandit sem a congue efficitur.</code> <strong>Morbi finibus quam ex, nec dictum mi sollicitudin id. Morbi quis massa tellus.</strong> <em>Donec pulvinar, odio ut luctus fringilla, leo velit aliquet enim, ac pretium odio lorem in ipsum.</em> <strike>Sed nec lobortis libero, non pellentesque eros.</strike>
+    </p>
+
+
+    <pre><code>fucntion whatever(arguments) {
+    if (arguments) {
+      return true
+    }
+  }</code></pre>
+
+    <p>
+      Vivamus tincidunt, dui nec viverra tincidunt, enim erat luctus neque, vitae porta libero ipsum iaculis eros. Donec ac ante tincidunt, bibendum odio in, rhoncus ligula. Aliquam non auctor nunc, at tincidunt diam. Nunc facilisis mollis ex, vel pellentesque dolor finibus ac. Vestibulum commodo odio eu urna venenatis, vitae tempor erat aliquam. Nullam maximus tincidunt viverra. Nulla lobortis neque et feugiat iaculis. Integer vel velit ac eros consectetur tempor.
+    </p>
+
+    <img src="https://picsum.photos/750" alt="a random image from picsum.photos for size example purposes" />
+
+    <blockquote>
+      Proin vel cursus magna, pellentesque facilisis quam. Praesent non orci mauris. Mauris id gravida nunc. Nam rhoncus eleifend neque sit amet ultrices. Nam congue lorem nec enim tincidunt scelerisque. Maecenas porta eros et consequat tempus. Donec ante dui, varius eget feugiat hendrerit, malesuada eu eros. Duis quis enim sit amet mauris auctor efficitur.
+    </blockquote>
+
+    <video title="title" data-align="left" controls="" loop="" autoplay="">
+      <source src="https://www.ryanfiller.com/images/site-assets/placeholders/video.mp4" type="video/mp4" muted="">
+      Sorry, your browser doesn't support embedded videos.
+    <track kind="descriptions" label="a test of the video component"></video>
+
+    <p>
+      Pellentesque euismod maximus mi sit amet feugiat. Morbi a nisi eu risus pretium feugiat. Sed in diam hendrerit, tempor tortor sit amet, tempus eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum dolor ipsum, egestas sit amet varius sed, blandit eu arcu. Sed mattis leo leo, eget imperdiet purus eleifend non. Vivamus viverra ipsum id dolor maximus tincidunt. Proin posuere orci nec dignissim dapibus.
+    </p>
+
+    <ol>
+      <li>nulla</li>
+      <li>ante</li>
+      <li>quam</li>
+      <li>pretium</li>
+      <li>sit</li>
+    </ol>
+
+    <ul>
+      <li>amet</li>
+      <li>lacinia</li>
+      <li>ac</li>
+      <li>tempus</li>
+      <li>fringilla</li>
+    </ul>
+
+    <dl>
+      <dt>Aenean</dt>
+      <dd>Aenean nec tellus auctor, rutrum ante ac, suscipit urna. Vestibulum rhoncus rutrum velit quis laoreet.</dd>
+
+      <dt>Nam</dt>
+      <dd>Nam tristique lorem ac neque facilisis consequat sit amet eu tellus.</dd>
+
+      <dt>Curabitur</dt>
+      <dd>Curabitur molestie cursus neque, vel finibus lacus ultrices sed.</dd>
+    </dl>
+    
+    <hr />
+
+    <iframe loading="lazy" src="https://ryan-responsive-iframe.netlify.com/" title="test embed"></iframe>
+
+    <table>
+      <tr>
+        <th>Fusce</th>
+        <th>Duis</th>
+        <th>Aenean</th>
+      </tr>
+      <tr>
+        <td>quis</td>
+        <td>facilisis</td>
+        <td>placerat</td>
+      </tr>
+      <tr>
+        <td>nisi</td>
+        <td>purus</td>
+        <td>massa</td>
+      </tr>
+    </table> 
+
+    <p>
+      Fusce ultricies libero non felis vestibulum, non finibus nibh auctor. Nam maximus velit tellus, non convallis urna porta eget.
+    </p>
+
+  </article>
+{% endblock %}

@@ -6,6 +6,22 @@ module.exports = async function() {
     const xml = await data.text()
     const parsed = await parser(xml).then(data => data.rss.channel[0])
 
+    const videoFixer = (_match, url, alt) => {
+        return `
+        <video controls="" loop="" autoplay="">
+            <source src="${url}" type="video/mp4"><br>
+            Sorry, your browser doesn't support embedded videos.<br>
+            <track kind="descriptions" label="${alt || ''}" />
+        </video>
+        `
+    }
+
+    const imageResizer = (_match, url, alt) => {
+        return `<a class='img-link' href="${url}" target="_blank" rel="noopener">
+            <img src="${url}?nf_resize=fit&w=750" alt="${alt}">
+        </a>`
+    }
+
     // wtf is up with the format of this...
     const formatted = {
         title: 'ryanblog',
@@ -30,6 +46,8 @@ module.exports = async function() {
             categories: item.category,
             excerpt: item.description[0].trim(),
             html: item['content:encoded'][0]
+                .replace(/\<img src="(.*\.mp4)" alt="(.*)"\>/g, videoFixer)
+                .replace(/\<img src="(.*\.(jpg|jpeg|png))" alt="(.*)"\>/g, imageResizer)
         }))
     }
 

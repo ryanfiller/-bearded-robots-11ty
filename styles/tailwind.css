@@ -6,6 +6,13 @@
   .grayscale {
     filter: grayscale(1);
   }
+
+  @variants hover,
+  focus {
+    .no-filter {
+      filter: none;
+    }
+  }
 }
 
 :root {
@@ -17,11 +24,118 @@
 
 a:hover,
 a:focus {
-  color: var(--highlight);
+  @apply text-highlight;
 }
 
 .post-body {
-  & p {
-    background: lime;
+  max-width: 80ch;
+
+  & * + * {
+    @apply mt-10;
+  }
+
+  & a {
+    @apply border-b-2 border-solid border-current;
+  }
+
+  & h1 {
+    @apply text-6xl;
+  }
+
+  & h2 {
+    @apply text-5xl;
+  }
+
+  & h3 {
+    @apply text-4xl;
+  }
+
+  & h4 {
+    @apply text-3xl;
+  }
+
+  & h5 {
+    @apply text-2xl;
+  }
+
+  & h6 {
+    @apply text-xl;
+  }
+
+  & p + h2,
+  & p + h3,
+  & p + h4,
+  & p + h5,
+  & p + h6 {
+      @apply font-bold mt-20 mb-10;
+    }
+
+  & pre {
+    @apply relative py-10 px-5 -mx-5 overflow-auto;
+
+    &::after {
+      content: '';
+      @apply block bg-dark dark:bg-light absolute inset-0 opacity-20 w-full h-full;
+    }
+  }
+
+  & ol,
+  & ul,
+  & dl {
+    list-style: revert;
+    @apply pl-5;
+
+    & li,
+    & dt,
+    & dd {
+      @apply m-0;
+    }
+  }
+
+  & dt {
+    @apply font-bold;
+  }
+
+  & blockquote {
+    @apply -mx-5 px-10 border-l-8 border-solid border-current text-xl;
+  }
+
+  & img,
+  & .img-link,
+  & video,
+  & iframe {
+    @apply grayscale mx-auto w-full max-w-xl;
+  }
+
+  & img:hover,
+  & img:focus,
+  & .img-link:hover,
+  & .img-link:focus,
+  & video:hover,
+  & video:focus,
+  & iframe:hover,
+  & iframe:focus {
+    @apply no-filter;
+  }
+
+  & hr {
+    @apply h-2 bg-current my-20;
+  }
+
+  & table {
+    @apply w-full border-2 border-solid border-current text-left;
+
+    & tbody {
+      @apply w-full;
+    }
+
+    & tr th {
+      @apply bg-dark text-light dark:bg-light dark:text-dark;
+    }
+
+    & tr th,
+    & tr td {
+      @apply px-2 py-1;
+    }
   }
 }
