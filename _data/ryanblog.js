@@ -27,6 +27,7 @@ module.exports = async function() {
         title: 'ryanblog',
         url: parsed.link[0].trim().replace('/blog', ''),
         description: parsed.description[0].trim(),
+        rss: parsed['atom:link'][0]['$'].href.trim(),
         update: new Date(parsed.lastBuildDate[0].trim()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric' }),
         image: {
             src: parsed.image[0].url[0].trim(),
