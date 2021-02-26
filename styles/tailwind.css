@@ -77,6 +77,10 @@ a:focus {
   & pre {
     @apply relative py-10 px-5 -mx-5 overflow-auto;
 
+    & code {
+      @apply relative z-10;
+    }
+
     &::after {
       content: '';
       @apply block bg-dark dark:bg-light absolute inset-0 opacity-20 w-full h-full;
